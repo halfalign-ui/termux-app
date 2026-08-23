@@ -23,6 +23,8 @@ android {
     def splitAPKsForReleaseBuilds = System.getenv("TERMUX_SPLIT_APKS_FOR_RELEASE_BUILDS") ?: "0" // F-Droid does not support split APKs #1904
 
     dependencies {
+    implementation "org.mozilla.geckoview:geckoview-omni:99.0.20220411174855"
+
         implementation "androidx.annotation:annotation:1.9.0"
         implementation "androidx.core:core:1.13.1"
         implementation "androidx.drawerlayout:drawerlayout:1.2.0"
@@ -146,6 +148,8 @@ android {
 }
 
 dependencies {
+    implementation "org.mozilla.geckoview:geckoview-omni:99.0.20220411174855"
+
     testImplementation "junit:junit:4.13.2"
     testImplementation "org.robolectric:robolectric:4.10"
     coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:1.1.5"

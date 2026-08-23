@@ -1,4 +1,8 @@
 package com.termux.app;
+import org.mozilla.geckoview.GeckoRuntime;
+import org.mozilla.geckoview.GeckoSession;
+import org.mozilla.geckoview.GeckoView;
+
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -212,6 +216,20 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
         setActivityTheme();
 
         super.onCreate(savedInstanceState);
+
+        try {
+            GeckoView gView = findViewById(R.id.geckoview);
+            if (gView != null) {
+                GeckoSession gSession = new GeckoSession();
+                GeckoRuntime gRuntime = GeckoRuntime.getDefault(this);
+                gSession.open(gRuntime);
+                gView.setSession(gSession);
+                gSession.loadUri("https://duckduckgo.com");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
 
         setContentView(R.layout.activity_termux);
 
